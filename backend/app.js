@@ -2,10 +2,24 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose")
 
-
+const mgcfg = require("../connection_config.js")
 const Post = require('./models/post');
 const app = express();
 
+console.log("mongodb://" + mgcfg.mongopostuser + ":" + mgcfg.mongopostpass + "@" + mgcfg.mongoserver + ":" + mgcfg.mongoport + mgcfg.mongoargs)
+mongoose.connect(
+  "mongodb://"
+  + mgcfg.mongopostuser
+  + ":"
+  + mgcfg.mongopostpass
+  + "@"
+  + mgcfg.mongoserver
+  + ":"
+  + mgcfg.mongoport
+  + mgcfg.mongoargs,
+  { useNewUrlParser: true, useUnifiedTopology: true }
+).then(res => console.log("We are now connected to the DB")
+).catch(err => console.log(err))
 
 app.use(bodyParser.json());
 
