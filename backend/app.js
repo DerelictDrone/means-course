@@ -39,23 +39,26 @@ app.post("/api/posts", (req, res, next) => {
     title: req.body.title,
     content: req.body.content
   });
-  console.log(post);
+  console.log(post)
+  post.save();
   res.status(201).json({
     message: 'Post added successfully'
   });
 });
 
-app.use('/api/posts', (req, res, next) => {
-  console.log('Posts got')
-  const posts = [
-    {id: 'a1',title: "Post 1",content: "Content 1"},
-    {id: 'a2',title: "Post 2",content: "Content 2"},
-    {id: 'a3',title: "Post 3",content: "Content 3"}
-  ]
+app.use('/api/posts', async (req, res, next) => {
+  console.log('Posts got!')
+  let posts = await Post.find({}).exec();
+
   res.status(200).json({
-    message: 'Posts fetched properly!',
-    posts: posts
+  message: 'Posts fetched properly!',
+  posts: posts
   });
+});
+
+app.delete("/api/posts/:id", (req, res, next) => {
+  console.log(req.params.id)
+  res.status(200).json({ message: "Post kicked the bucket" });
 })
 
 module.exports = app;

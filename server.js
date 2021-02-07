@@ -2,7 +2,8 @@ const debug = require('debug')('node-angular');
 const http = require('http');
 const { nodeModuleNameResolver } = require('typescript');
 const app = require('./backend/app');
-const ipconfig = require('./connection_config.js');
+const ipconfig = require("./connection_config.js")
+
 
 const normalizePort = val => {
   var port = parseInt(val, 10)
@@ -45,10 +46,11 @@ const onListening = () => {
   debug("Listening on " + bind)
 }
 
-const port = normalizePort(process.env.Port || "4242");
+const port = normalizePort(process.env.Port || ipconfig.nodeport);
 app.set("port", port);
 
 const server = http.createServer(app);
 server.on("error", onError)
 server.on("listening", onListening)
 server.listen(port)
+console.log("Node running on " + ipconfig.nodeport)
