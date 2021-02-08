@@ -21,6 +21,6 @@ exports.nodeport = "28902"
 exports.mongoserver = "lan.mongodb.lan"
 exports.mongoport = "27017"
 exports.mongopostuser = "post-bot"
-exports.mongopostpass = "there-never-was-a-password"
+exports.mongopostpass = "wGQqB5Uf4igHGvE"
 exports.mongoargs = "/post-handler?authSource=post-handler&readPreference=primary&appname=nodejsposthandler=ssl=false"
 
