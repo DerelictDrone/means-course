@@ -16,7 +16,3 @@ Your use case may vary, so feel free to change the IP's to suit your needs.
 export const NodeServer = "phpminor.duckdns.org"
 export const NodePort = "28902"
 
-//not used anywhere at the moment in my typescript environment
-export const MongoServer = "lan.mongodb.lan"
-export const MongoPort = "27017"
-

@@ -17,6 +17,8 @@ Your use case may vary, so feel free to change the IP's to suit your needs.
 exports.nodeserver = "phpminor.duckdns.org"
 //the port is definitely used, not sure on server though
 exports.nodeport = "28902"
+//protocol used for image requests, format is reqprotocol + ://
+exports.reqprotocol = "http"
 
 exports.mongoserver = "lan.mongodb.lan"
 exports.mongoport = "27017"
