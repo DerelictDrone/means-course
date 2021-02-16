@@ -47,13 +47,30 @@ router.post("", multer({storage: storage}).single("image"), (req, res, next) => 
   });
 });
 
-router.get("", async (req, res, next) => {
-  let posts = await Post.find({}).exec();
-  res.status(200).json({
-  message: 'Posts fetched properly!',
-  posts: posts
-  });
-});
+router.get("", (req, res, next) => {
+  const pageSize = +req.query.pgsz;
+  const currentPage = +req.query.pg;
+  const postQuery = Post.find();
+  let fetchedPosts;
+  if (pageSize && currentPage){
+    postQuery
+      .skip(pageSize * (currentPage - 1))
+      .limit(pageSize);
+  }
+  postQuery.then(documents => {
+    fetchedPosts = documents;
+    console.log(Post.estimatedDocumentCount())
+    //return Post.count(); //deprecated
+     return Post.estimatedDocumentCount().exec(); //not deprecated but doesn't seem to return a number inherently
+  })
+  .then(count =>
+    res.status(200).json({
+      message: 'Posts fetched properly!',
+      posts: fetchedPosts,
+      maxPosts: count
+    })
+  );
+})
 
 router.put("/:id", multer({storage: storage}).single("image"), (req, res, next) => {
   let imagePath = req.body.imagePath;
