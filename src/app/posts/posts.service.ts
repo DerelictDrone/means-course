@@ -28,12 +28,13 @@ export class PostsService {
             id: post._id,
             imagePath: post.imagePath
           }
-        }), maxPosts: postData.maxPosts};
+        }), maxPosts: postData.maxPosts
+      };
     })
   )
     .subscribe(modPostData => {
         this.posts = modPostData.posts;
-        this.postsUpdated.next({posts: [...this.posts], postCount: modPostData.posts});
+        this.postsUpdated.next({posts: [...this.posts], postCount: modPostData.maxPosts});
       });
   }
 

@@ -59,19 +59,14 @@ router.get("", (req, res, next) => {
   }
   postQuery.then(documents => {
     fetchedPosts = documents;
-    console.log(Post.estimatedDocumentCount())
-    //return Post.count(); //deprecated
-     return Post.estimatedDocumentCount().exec(); //not deprecated but doesn't seem to return a number inherently
-  })
-  .then(count =>
-    res.status(200).json({
-      message: 'Posts fetched properly!',
-      posts: fetchedPosts,
-      maxPosts: count
-    })
-  );
+    Post.estimatedDocumentCount()
+        .then(count => res.status(200).json({
+            message: 'Posts fetched properly!',
+            posts: fetchedPosts,
+            maxPosts: count
+        }));
+  });
 })
-
 router.put("/:id", multer({storage: storage}).single("image"), (req, res, next) => {
   let imagePath = req.body.imagePath;
   if (req.file){

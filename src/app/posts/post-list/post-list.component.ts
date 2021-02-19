@@ -31,7 +31,7 @@ export class PostListComponent implements OnInit, OnDestroy {
         this.totalPosts = postData.postCount
         this.isLoading = false
       });
-  }
+  };
 
   onChangedPage(pageData: PageEvent) {
     this.isLoading = true;
