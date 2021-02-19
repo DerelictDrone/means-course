@@ -1,10 +1,14 @@
+# MEANS Course project, done by Phpminor(derelict-drone)
 # MeanCourse
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
 ## Development server
+Make sure to edit connection_config, both the .js and .ts files in accordance to your use case. (currently it comes with my own configs, which will most likely not work for you)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `ng serve` for an angular dev server. Navigate to `http://localhost:25565/`. The app will automatically reload if you change any of the source files.
+
+Run `npm run start:server` to run the node server with NodeMon.
 
 ## Code scaffolding
 
