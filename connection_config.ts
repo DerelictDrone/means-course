@@ -12,7 +12,7 @@ Using DNS records here means I can change these without ever restarting the app
 Your use case may vary, so feel free to change the IP's to suit your needs.
 */
 
-//used in post.service.ts
+//used in post.service.ts and auth.service.ts
 export const NodeServer = "phpminor.duckdns.org"
 export const NodePort = "28902"
-
+export const reqprotocol = "http"
