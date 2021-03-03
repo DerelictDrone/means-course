@@ -26,13 +26,15 @@ export class PostsService {
             title: post.title,
             content: post.content,
             id: post._id,
-            imagePath: post.imagePath
+            imagePath: post.imagePath,
+            creator: post.creator
           }
         }), maxPosts: postData.maxPosts
       };
     })
   )
     .subscribe(modPostData => {
+        console.log(modPostData);
         this.posts = modPostData.posts;
         this.postsUpdated.next({posts: [...this.posts], postCount: modPostData.maxPosts});
       });
@@ -43,7 +45,13 @@ export class PostsService {
   }
 
   getPost(id: any) {
-    return this.http.get<{_id: string, title: string, content: string, imagePath: string}>(reqprotocol + "://" + NodeServer + ":" + NodePort + "/api/posts/" + id);
+    return this.http.get<{
+      _id: string,
+      title: string,
+      content: string,
+      imagePath: string,
+      creator: string
+    }>(reqprotocol + "://" + NodeServer + ":" + NodePort + "/api/posts/" + id);
   }
 
   addPost(title: string, content: string, image: File) {
@@ -70,7 +78,8 @@ export class PostsService {
         id: id,
         title: title,
         content: content,
-        imagePath: image
+        imagePath: image,
+        creator: "null"
       };
     }
   this.http.put(reqprotocol + "://" + NodeServer + ":" + NodePort + "/api/posts/" + id, postData)
