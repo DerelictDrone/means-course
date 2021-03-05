@@ -4,11 +4,16 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.1.2.
 
 ## Development server
-Make sure to edit connection_config, both the .js and .ts files in accordance to your use case. (currently it comes with my own configs, which will most likely not work for you)
+Make sure to edit connection_config, both the .js(backend) and .ts(frontend) files in accordance to your use case. (currently it comes with my own configs, which will most likely not work for you)
 
 Run `ng serve` for an angular dev server. Navigate to `http://localhost:25565/`. The app will automatically reload if you change any of the source files.
 
 Run `npm run start:server` to run the node server with NodeMon.
+
+## Generating Apidocs
+Run `npm run makedoc-backend` to compile documentation comments in the backend folder, and output them to root/doc/backend
+
+Run `npm run makedoc-src` to compile documentation comments in the src folder, and output them to root/doc/src
 
 ## Code scaffolding
 
