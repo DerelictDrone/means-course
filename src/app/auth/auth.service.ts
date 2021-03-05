@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Subject } from 'rxjs'
 
-import { NodeServer, NodePort, reqprotocol } from 'connection_config'
+import { NodeServer, NodePort, reqprotocol } from 'src/connection_config'
 import { AuthData } from './auth-data-model'
 import { Router } from '@angular/router'
 

@@ -3,7 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require("mongoose");
 
-const mgcfg = require("../connection_config.js");
+const mgcfg = require("./connection_config.js");
 const postsRoutes = require("./routes/posts");
 const userRoutes = require("./routes/user");
 

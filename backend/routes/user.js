@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require("../models/user");
 const jwt = require("jsonwebtoken");
 
-const cfg = require("../../connection_config.js");
+const cfg = require("../connection_config.js");
 
 router.post("/signup", (req, res, next) =>{
   bcrypt.hash(req.body.password, 10)

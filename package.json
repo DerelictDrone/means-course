@@ -8,7 +8,9 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "nodemon server.js"
+    "makedoc-src": "apidoc -i ./src -o ./doc/src",
+    "makedoc-backend": "apidoc -i ./backend -o ./doc/backend",
+    "start:server": "nodemon ./backend/server.js"
   },
   "private": true,
   "dependencies": {

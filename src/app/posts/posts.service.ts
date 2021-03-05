@@ -5,7 +5,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 import { Post } from './post.model';
-import { NodeServer, NodePort, reqprotocol } from 'connection_config';
+import { NodeServer, NodePort, reqprotocol } from 'src/connection_config';
 
 @Injectable({providedIn: 'root'})
 export class PostsService {

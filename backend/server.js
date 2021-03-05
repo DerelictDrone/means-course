@@ -1,7 +1,6 @@
 const debug = require('debug')('node-angular');
 const http = require('http');
-const { nodeModuleNameResolver } = require('typescript');
-const app = require('./backend/app');
+const app = require('./app');
 const ipconfig = require("./connection_config.js")
 
 

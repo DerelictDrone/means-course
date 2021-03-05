@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const cfg = require("../../connection_config")
+const cfg = require("../connection_config")
 
 module.exports = (req, res, next) =>{
   try {
