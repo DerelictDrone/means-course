@@ -17,6 +17,7 @@
         ]
       }
     },
+    "description": "<p>Deletes a post, the ID in the URL is the post we will delete, needs a users token in the local storage(thus, to be signed in) to work however.</p>",
     "success": {
       "fields": {
         "Success 200": [
@@ -337,5 +338,152 @@
     "version": "0.0.0",
     "filename": "backend/routes/posts.js",
     "groupTitle": "Posts"
+  },
+  {
+    "type": "post",
+    "url": "/api/users/login",
+    "title": "",
+    "name": "Login",
+    "group": "Users",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "optional": false,
+            "field": "id",
+            "description": "<p>(number) The ID number of the post we're going to be deleting</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>Log a user in with a javascript object containing an email, and a password. Password is hashed, and the backend gives the user a token lasting 1 hour (3600).</p>",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "Deletion",
+            "description": "<p>Successful</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP status 200\n{\n\"message\": \"Deletion Successful\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthFailWrongCredentials",
+            "description": ""
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthFailedNoResult",
+            "description": ""
+          },
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "AuthFailedScriptError",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP status 401\n{\n\"message\": \"Auth failed(Email or password incorrect)\"\n}",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP status 401\n{\n\"message\": \"Auth failed(No result from server)\"",
+          "type": "json"
+        },
+        {
+          "title": "Error-Response:",
+          "content": "HTTP status 401\n{\n\"message\": \"Auth failed(Auth scripting error, please report this)\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "backend/routes/user.js",
+    "groupTitle": "Users"
+  },
+  {
+    "type": "post",
+    "url": "/api/users/signup",
+    "title": "",
+    "name": "Signup",
+    "group": "Users",
+    "parameter": {
+      "fields": {
+        "Parameter": [
+          {
+            "group": "Parameter",
+            "type": "array",
+            "optional": false,
+            "field": "an",
+            "description": "<p>array consisting of [email: string, password: string]</p>"
+          }
+        ]
+      }
+    },
+    "description": "<p>Registers a new user with a JS object containing an email, and a password. The password is encrypted with bcrypt, then saved to our Mongo Database</p>",
+    "success": {
+      "fields": {
+        "Success 200": [
+          {
+            "group": "Success 200",
+            "type": "string",
+            "optional": false,
+            "field": "Message:",
+            "description": "<p>User Created</p>"
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Success-Response:",
+          "content": "HTTP status 200\n{\n\"message\": \"User Created\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "error": {
+      "fields": {
+        "Error 4xx": [
+          {
+            "group": "Error 4xx",
+            "optional": false,
+            "field": "InvalidCredentials",
+            "description": ""
+          }
+        ]
+      },
+      "examples": [
+        {
+          "title": "Error-Response:",
+          "content": "HTTP status 500\n{\n\"message\": \"Invalid Authentication Credentials\"\n}",
+          "type": "json"
+        }
+      ]
+    },
+    "version": "0.0.0",
+    "filename": "backend/routes/user.js",
+    "groupTitle": "Users"
   }
 ]

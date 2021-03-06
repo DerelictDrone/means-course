@@ -6,6 +6,32 @@ const jwt = require("jsonwebtoken");
 
 const cfg = require("../connection_config.js");
 
+  /**
+ * @api {post} /api/users/signup
+ * @apiName Signup
+ * @apiGroup Users
+ *
+ * @apiParam {array} an array consisting of [email: string, password: string]
+ *
+ * @apiDescription Registers a new user with a JS object containing an email, and a password. The password is encrypted with bcrypt, then saved to our Mongo Database
+ *
+ * @apiSuccess {string} Message: User Created
+ *
+ * @apiSuccessExample Success-Response:
+ * HTTP status 200
+ * {
+ * "message": "User Created"
+ * }
+ *
+ * @apiError InvalidCredentials
+ *
+ * @apiErrorExample Error-Response:
+ * HTTP status 500
+ * {
+ * "message": "Invalid Authentication Credentials"
+ * }
+ */
+
 router.post("/signup", (req, res, next) =>{
   bcrypt.hash(req.body.password, 10)
   .then(hash => {
@@ -28,8 +54,49 @@ router.post("/signup", (req, res, next) =>{
   });
 });
 
-router.post("/login", (req, res, next) => {
-  let fetchedUser;
+/**
+ * @api {post} /api/users/login
+ * @apiName Login
+ * @apiGroup Users
+ *
+ * @apiParam id(number) The ID number of the post we're going to be deleting
+ *
+ * @apiDescription Log a user in with a javascript object containing an email, and a password. Password is hashed, and the backend gives the user a token lasting 1 hour (3600).
+ *
+ * @apiSuccess {string} Deletion Successful
+ *
+ * @apiSuccessExample Success-Response:
+ * HTTP status 200
+ * {
+ * "message": "Deletion Successful"
+ * }
+ *
+ * @apiError AuthFailWrongCredentials
+ *
+ * @apiErrorExample Error-Response:
+ * HTTP status 401
+ * {
+ * "message": "Auth failed(Email or password incorrect)"
+ * }
+ *
+ * @apiError AuthFailedNoResult
+ *
+ * @apiErrorExample Error-Response:
+ * HTTP status 401
+ * {
+ * "message": "Auth failed(No result from server)"
+ *
+ * @apiError AuthFailedScriptError
+ *
+ * @apiErrorExample Error-Response:
+ * HTTP status 401
+ * {
+ * "message": "Auth failed(Auth scripting error, please report this)"
+ * }
+ */
+
+  router.post("/login", (req, res, next) => {
+    let fetchedUser;
   User.findOne({ email: req.body.email })
     .then(user => {
       if (!user) {

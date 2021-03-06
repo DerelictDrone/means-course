@@ -270,6 +270,8 @@ router.get("/:id", (req, res, next) =>{
  *
  * @apiParam id(number) The ID number of the post we're going to be deleting
  *
+ * @apiDescription Deletes a post, the ID in the URL is the post we will delete, needs a users token in the local storage(thus, to be signed in) to work however.
+ *
  * @apiSuccess {string} Deletion Successful
  *
  * @apiSuccessExample Success-Response:
