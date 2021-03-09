@@ -15,6 +15,8 @@ Run `npm run makedoc-backend` to compile documentation comments in the backend f
 
 Run `npm run makedoc-src` to compile documentation comments in the src folder, and output them to root/doc/src
 
+Up-to-date apidocs are hosted at https://www.mechanicum.duckdns.org/docs/backend/index.html
+
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
